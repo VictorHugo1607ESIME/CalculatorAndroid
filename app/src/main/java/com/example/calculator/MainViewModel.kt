@@ -98,4 +98,3 @@ class MainViewModel: ViewModel() {
         setChar('d')
     }
 }
-
