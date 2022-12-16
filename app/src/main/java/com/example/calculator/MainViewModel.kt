@@ -73,9 +73,8 @@ class MainViewModel: ViewModel() {
     }
 
     private fun split(){
-        if(lastValue.value!!.toFloat() == 0f){
+        if(lastValue.value!!.toFloat() == 0f)
             return
-        }
         resultadoAcumulado.value = resultadoAcumuladoHelp / lastValue.value!!.toFloat()
     }
 
@@ -99,3 +98,4 @@ class MainViewModel: ViewModel() {
         setChar('d')
     }
 }
+
