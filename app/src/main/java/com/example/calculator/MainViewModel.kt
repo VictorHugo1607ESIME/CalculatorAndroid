@@ -1,16 +1,21 @@
 package com.example.calculator
 
+import android.nfc.Tag
+import android.os.Build
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.util.Log
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
 class MainViewModel: ViewModel() {
 
     var resultadoAcumulado : MutableLiveData<Float> = MutableLiveData()
-    private var resultadoAcumuladoHelp: Float = 0f
     var lastValue : MutableLiveData<String> = MutableLiveData()
-    private var lastOperation: Char? = null
+    var lastOperation : MutableLiveData<Char> = MutableLiveData()
+    private var resultadoAcumuladoHelp: Float = 0f
 
     init {
         reset()
@@ -20,29 +25,28 @@ class MainViewModel: ViewModel() {
         resultadoAcumulado.value = 0f
         resultadoAcumuladoHelp = 0f
         lastValue.value = "0"
-        lastOperation= null
+        lastOperation.value = ' '
     }
 
     fun setChar(number: Char){
-
         if(lastValue.value.equals("0") && isNumber(number)){
             lastValue.value = ""
         }
 
-        if(isNumber(number)){
+        if(isNumber(number) || number == '.'){
             lastValue.value += number
         }
 
-        if(lastOperation != null) {
-            when (lastOperation) {
+        if(lastOperation.value != null) {
+            when (lastOperation.value) {
+                ' ' -> add()
                 '+' -> add()
                 '-' -> subtract()
                 '*' -> multiply()
                 '/' -> split()
+                '%' -> module()
             }
-            return
         }
-        add()
     }
 
     private fun isNumber(num: Char): Boolean{
@@ -75,14 +79,23 @@ class MainViewModel: ViewModel() {
         resultadoAcumulado.value = resultadoAcumuladoHelp / lastValue.value!!.toFloat()
     }
 
+    private fun module() {
+        resultadoAcumulado.value = resultadoAcumuladoHelp % lastValue.value!!.toFloat()
+    }
+
     fun initValues(operation: Char){
         resultadoAcumuladoHelp = resultadoAcumulado.value!!
         lastValue.value = "0"
-        lastOperation = operation
+        lastOperation.value = operation
     }
 
     fun deleteLastDigit(){
-        lastValue.value = lastValue.value!!.substring(0, lastValue.value!!.length-1)
+        if(lastValue.value!!.count() > 1)
+            lastValue.value = lastValue.value!!.substring(0, lastValue.value!!.length-1)
+        else  {
+            resultadoAcumulado.value = 0f
+            lastValue.value = "0"
+        }
         setChar('d')
     }
 }

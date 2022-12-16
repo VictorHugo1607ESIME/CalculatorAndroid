@@ -1,7 +1,11 @@
 package com.example.calculator
 
+import android.content.Context
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Toast
@@ -32,6 +36,10 @@ class MainActivity : AppCompatActivity() {
 
         viewModel.resultadoAcumulado.observe(this, Observer{
                 accumulatedResult -> binding!!.resulFinal.text = accumulatedResult.toString()
+        })
+
+        viewModel.lastOperation.observe(this, Observer{
+            result -> binding!!.presentOperator.text = result.toString()
         })
     }
 }

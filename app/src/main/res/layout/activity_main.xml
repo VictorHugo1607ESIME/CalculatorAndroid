@@ -9,332 +9,323 @@
             type="com.example.calculator.MainViewModel" />
     </data>
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:padding="20dp"
         tools:context=".MainActivity">
 
         <Button
             android:id="@+id/zero"
-            android:layout_width="155dp"
-            android:layout_height="70dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="18dp"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="13dp"
+            android:layout_width="160dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:gravity="center"
             android:onClick="@{()->mainViewModel.setChar('0')}"
             android:text="0"
-            android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="35sp" />
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/point"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_below="@id/display"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:layout_alignTop="@id/zero"
-            android:layout_marginEnd="30dp"
             android:layout_toEndOf="@+id/zero"
             android:gravity="center"
             android:text="."
-            android:textAlignment="center"
-            android:textSize="35sp" />
+            android:onClick="@{()->mainViewModel.setChar('.')}"
+            android:textSize="30sp"
+            app:layout_constraintBottom_toBottomOf="@+id/zero"
+            app:layout_constraintStart_toEndOf="@+id/zero"
+            app:layout_constraintTop_toTopOf="@+id/zero"
+            app:layout_constraintVertical_bias="1.0" />
 
         <Button
             android:id="@+id/igual"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_below="@id/display"
-            android:layout_alignTop="@id/zero"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="20dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:gravity="center"
             android:onClick="@{()->mainViewModel.initValues('=')}"
             android:text="="
             android:textAlignment="center"
             android:textColor="@color/operators"
-            android:textSize="35sp" />
+            android:textSize="30sp"
+            app:layout_constraintTop_toTopOf="@+id/point"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <Button
             android:id="@+id/one"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_above="@+id/zero"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="15dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:gravity="center"
             android:onClick="@{()->mainViewModel.setChar('1')}"
             android:text="1"
-            android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="35sp" />
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/zero"/>
 
         <Button
             android:id="@+id/two"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_above="@+id/zero"
-            android:layout_marginEnd="15dp"
-            android:layout_toEndOf="@id/one"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:gravity="center"
             android:onClick="@{()->mainViewModel.setChar('2')}"
             android:text="2"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="35sp" />
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/one"
+            app:layout_constraintTop_toTopOf="@+id/one"/>
 
         <Button
             android:id="@+id/three"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_above="@+id/zero"
-            android:layout_toEndOf="@id/two"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:gravity="center"
             android:onClick="@{()->mainViewModel.setChar('3')}"
             android:text="3"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="35sp" />
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/two"
+            app:layout_constraintTop_toTopOf="@+id/two" />
 
         <Button
             android:id="@+id/plus"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_above="@+id/zero"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="20dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:gravity="center"
             android:onClick="@{()->mainViewModel.initValues('+')}"
             android:text="+"
             android:textAlignment="center"
             android:textColor="@color/operators"
-            android:textSize="35sp" />
+            android:textSize="30sp"
+            app:layout_constraintBottom_toTopOf="@+id/igual"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <Button
             android:id="@+id/four"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_above="@+id/one"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="15dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:gravity="center"
             android:onClick="@{()->mainViewModel.setChar('4')}"
             android:text="4"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="35sp" />
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/one"/>
 
         <Button
             android:id="@+id/five"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_above="@+id/one"
-            android:layout_marginEnd="15dp"
-            android:layout_toEndOf="@id/four"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:gravity="center"
             android:onClick="@{()->mainViewModel.setChar('5')}"
             android:text="5"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="35sp" />
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/four"
+            app:layout_constraintTop_toTopOf="@+id/four"/>
 
         <Button
             android:id="@+id/six"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_above="@+id/one"
-            android:layout_toEndOf="@+id/five"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:gravity="center"
             android:onClick="@{()->mainViewModel.setChar('6')}"
             android:text="6"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="35sp" />
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/five"
+            app:layout_constraintTop_toTopOf="@+id/five"/>
 
         <Button
             android:id="@+id/minius"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_above="@+id/one"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="20dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:gravity="center"
             android:onClick="@{() -> mainViewModel.initValues('-')}"
             android:text="-"
             android:textAlignment="center"
             android:textColor="@color/operators"
-            android:textSize="35sp" />
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/six"/>
 
         <Button
             android:id="@+id/seven"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_above="@+id/four"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="15dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:gravity="center"
             android:onClick="@{()->mainViewModel.setChar('7')}"
             android:text="7"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="35sp" />
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/four"/>
 
         <Button
             android:id="@+id/eigth"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_above="@+id/four"
-            android:layout_marginEnd="15dp"
-            android:layout_toEndOf="@+id/seven"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:gravity="center"
             android:onClick="@{()->mainViewModel.setChar('8')}"
             android:text="8"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="35sp" />
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/seven"
+            app:layout_constraintTop_toTopOf="@+id/seven"/>
 
         <Button
             android:id="@+id/nine"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_above="@+id/four"
-            android:layout_toEndOf="@+id/eigth"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:gravity="center"
             android:onClick="@{()->mainViewModel.setChar('9')}"
             android:text="9"
             android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="35sp" />
+            android:textSize="30sp"
+            app:layout_constraintStart_toEndOf="@+id/eigth"
+            app:layout_constraintTop_toTopOf="@+id/eigth"/>
 
         <Button
             android:id="@+id/multiplication"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_above="@+id/four"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="20dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:gravity="center"
             android:onClick="@{()->mainViewModel.initValues('*')}"
             android:text="*"
             android:textAlignment="center"
             android:textColor="@color/operators"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/nine"/>
 
         <Button
             android:id="@+id/ac"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_above="@+id/seven"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="15dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:gravity="center"
             android:onClick="@{()->mainViewModel.reset()}"
             android:text="c"
             android:textAlignment="center"
             android:textColor="@color/operators"
-            android:textSize="40sp" />
+            android:textSize="35sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/seven"/>
 
         <ImageView
             android:id="@+id/pm"
             android:layout_width="30dp"
             android:layout_height="70dp"
-            android:layout_above="@+id/seven"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="35dp"
-            android:layout_toEndOf="@+id/ac"
             android:background="@android:color/transparent"
             android:gravity="center"
             android:onClick="@{()->mainViewModel.deleteLastDigit()}"
             android:src="@drawable/eliminar"
             android:textAlignment="center"
-            android:textColor="@color/operators" />
+            android:textColor="@color/operators"
+            app:layout_constraintStart_toEndOf="@+id/ac"
+            app:layout_constraintTop_toTopOf="@+id/ac"
+            app:layout_constraintEnd_toEndOf="@+id/eigth"/>
 
         <Button
             android:id="@+id/module"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_above="@+id/seven"
-            android:layout_toEndOf="@+id/pm"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:gravity="center"
+            android:onClick="@{()->mainViewModel.initValues('%')}"
             android:text="%"
             android:textAlignment="center"
             android:textColor="@color/operators"
-            android:textSize="35sp" />
+            android:textSize="30sp"
+            app:layout_constraintStart_toStartOf="@+id/nine"
+            app:layout_constraintTop_toTopOf="@+id/ac"/>
 
         <Button
             android:id="@+id/division"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_above="@+id/seven"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="20dp"
+            android:layout_width="80dp"
+            android:layout_height="60dp"
             android:background="@android:color/transparent"
             android:gravity="center"
             android:onClick="@{()->mainViewModel.initValues('/')}"
             android:text="÷"
             android:textAlignment="center"
             android:textColor="@color/operators"
-            android:textSize="35sp" />
+            android:textSize="30sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ac"/>
 
         <View
             android:id="@+id/line"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_above="@id/ac"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@color/operators" />
+            android:background="@color/operators"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/ac"/>
+
+        <Button
+            android:id="@+id/presentOperator"
+            android:layout_width="80dp"
+            android:layout_height="0dp"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:text="-"
+            android:textAlignment="center"
+            android:textColor="@color/operators"
+            android:textSize="35sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/display"
+            app:layout_constraintTop_toTopOf="@+id/display"/>
 
         <TextView
             android:id="@+id/display"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/ac"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="12dp"
             android:padding="10dp"
             android:text="0"
             android:textAlignment="textEnd"
-            android:textSize="40sp" />
+            android:textSize="35sp"
+            app:layout_constraintBottom_toTopOf="@+id/line"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/presentOperator" />
 
         <TextView
             android:id="@+id/resulFinal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/display"
-            android:layout_marginStart="20dp"
-            android:layout_marginEnd="20dp"
             android:padding="10dp"
             android:text=""
             android:textAlignment="textEnd"
             android:textColor="@color/black"
-            android:textSize="50sp" />
+            android:textSize="40sp"
+            app:layout_constraintBottom_toTopOf="@+id/display"/>
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
