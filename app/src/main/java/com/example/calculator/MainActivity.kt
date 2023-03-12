@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        print("Start")
         initViewModel()
         setContentView(binding!!.root)
     }

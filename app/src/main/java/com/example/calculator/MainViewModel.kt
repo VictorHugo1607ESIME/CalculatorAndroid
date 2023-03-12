@@ -1,12 +1,5 @@
 package com.example.calculator
 
-import android.nfc.Tag
-import android.os.Build
-import android.os.VibrationEffect
-import android.os.Vibrator
-import android.util.Log
-import android.widget.Toast
-import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
